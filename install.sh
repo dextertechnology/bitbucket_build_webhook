@@ -25,6 +25,3 @@ then
 else
     echo "File exists"
 fi
-
-
-
