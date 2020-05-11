@@ -1,0 +1,19 @@
+[Unit]
+Description=Bitbucket build pipeline receiver to deploy application
+After=network.target
+
+[Service]
+Environment=BRANCH=master
+Environment=REPOSITORY=dexter/bitbucket_webhook
+Environment=WEBHOOK_HOST=localhost
+Environment=WEBHOOK_PORT=8000
+Environment=SCRIPT_DIR=./scripts
+Environment=TOKEN=bd3d75978a182fa93598df9731ca0c812c2f76410695a8c935e8823b7584f950
+
+User=root
+WorkingDirectory=/etc/bitbucket_webhook
+ExecStart=/usr/local/bin/python3 main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
